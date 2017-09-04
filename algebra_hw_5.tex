@@ -1,0 +1,80 @@
+\documentclass[a4paper, 12pt]{article}
+
+\usepackage[T2A]{fontenc}			% кодировка
+\usepackage[utf8]{inputenc}			% кодировка исходного текста
+\usepackage[english,russian]{babel}	% локализация и переносы
+
+\usepackage{amsmath}
+\usepackage{icomma} 				% "Умная" запятая
+\usepackage{amsfonts}
+
+\sloppy
+\usepackage[T2A]{fontenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\graphicspath{{pictures/}}
+\DeclareGraphicsExtensions{.pdf,.png,.jpg}
+\newcommand\tab[1][1cm]{\hspace*{#1}}
+
+\newcommand{\ip}[2]{(#1, #2)}
+
+\title{Д/з - 5}
+\author{Чистяков Глеб, группа 167}
+\date{18 мая 2017 г.}
+
+\begin{document}
+	
+	\maketitle
+	
+	\textbf{№1} \\
+	
+	Имеется кольцо $R = \left\{ \begin{pmatrix} a & 0 \\ b & c \end{pmatrix} \bigg| a, b, c \in \mathbb R \right\}$ \\
+	
+	1) Элемент $r \in R$ - обратимый, если $r$ - невырожденный, то есть когда $a \neq 0$ и $c \neq 0$. $\begin{pmatrix} a & 0 \\ b & c \end{pmatrix}^{-1} = \dfrac{1}{ac}\begin{pmatrix} c & 0 \\ -b & a \end{pmatrix}$. Таким образом, все обратные элементы: $\left\{ \begin{pmatrix} a & 0 \\ b & c \end{pmatrix} \bigg| a, c \in \mathbb R \setminus \{0\}, b \in \mathbb{R} \right\}$. \\
+	
+	2) Элемент $r \in R, r \neq 0$ (то есть $a \neq b \neq c \neq 0)$ - левый (правый) делитель нуля, если найдется такой $r' = \begin{pmatrix} a' & 0 \\ b' & c' \end{pmatrix} \in R, r' \neq 0$ (то есть $a' \neq b' \neq c' \neq 0)$, что выполняется $rr' = 0$ $(r'r = 0)$. Тогда: \\
+	$rr' = \begin{pmatrix} a & 0 \\ b & c \end{pmatrix} \begin{pmatrix} a' & 0 \\ b' & c' \end{pmatrix} = \begin{pmatrix} aa' & 0 \\ a'b + b'c & cc' \end{pmatrix} = 0$, при \\\\
+	\tab 1) $a = 0, b = 0, c \neq 0 \Rightarrow a' \neq 0, b' = c' = 0$ \\
+	\tab 2) $a \in \mathbb{R}, b \in \mathbb{R}, c = 0$ , где $a$ и $b$ не равны нулю одновременно $\Rightarrow a' = 0, b', c' \in \mathbb{R}$, где $b'$ и $c'$ не равны нулю одновременно \\\\
+	$r'r = \begin{pmatrix} a' & 0 \\ b' & c' \end{pmatrix} \begin{pmatrix} a & 0 \\ b & c \end{pmatrix} = \begin{pmatrix} aa' & 0 \\ ab' + bc' & cc' \end{pmatrix} = 0$, при \\\\
+	\tab 1) $a \neq 0, b = 0, c = 0 \Rightarrow a' = b' = 0, c' \neq 0$ \\
+	\tab 2) $a = 0, b, c \in \mathbb{R}$ , где $b$ и $c$ не равны нулю одновременно $\Rightarrow a', b' \in \mathbb{R}, c' = 0$, где $a'$ и $b'$ не равны нулю одновременно \\
+	
+	3) Элемент $r \in R, r \neq 0$ - нильпотентный, если найдется такое $n$, что $r^n = 0$. \\
+	Рассмотрим $n = 2$: $\begin{pmatrix} a & 0 \\ b & c \end{pmatrix}^2 = \begin{pmatrix} a^2 & 0 \\ b(a + c) & c^2 \end{pmatrix}$ \\
+	Для $n = 3$: $\begin{pmatrix} a & 0 \\ b & c \end{pmatrix}^3 = \begin{pmatrix} a^3 & 0 \\ b(a^2 + ac + c^2) & c^3 \end{pmatrix}$ \\
+	Тогда предположим для $n:$ $r^n = \begin{pmatrix} a & 0 \\ b & c \end{pmatrix}^n = \begin{pmatrix} a^n & 0 \\ bk & c^n \end{pmatrix}$, где $k$ - некоторое число, зависящее от $a$ и $c$. \\\\
+	Для $n+1$: $r^{n + 1} \begin{pmatrix} a^n & 0 \\ bk & c^n \end{pmatrix} \begin{pmatrix} a & 0 \\ b & c \end{pmatrix} = \begin{pmatrix} a^{n + 1} & 0 \\ bk' & c^{n + 1} \end{pmatrix}$, где $k$ опять же некоторое число, зависящее от $a$ и $c$. \\
+	Следовательно наше предположение верно, тогда все нильпотентные элементы: $\left\{ \begin{pmatrix} a & 0 \\ b & c \end{pmatrix} \bigg| a = c = 0, b \in \mathbb R \setminus \{0\} \right\}$. \\
+	
+	\textbf{№2} \\
+	
+	Приведем пример идеал в кольце $\mathbb Z[x]$, не являющимся главным. Рассмотрим идеал, порождающийся двумя элементами $(x, 2)$. Пусть он представим в виде $(x, 2) = xf(x) + 2g(x) \in \mathbb Z[x]$, где $f(x)$ и $g(x)$ какие-то многочлены из $\mathbb Z[x]$. \\
+	1. Покажем, что $(x, 2)$ - подгруппа по сложению:\\
+	\tab 1) Нейтральный элемент - многочлен с нулевыми коэффициентами. Он находится в $(x,2)$, так как $2|0$. \\
+	\tab 2) Для каждого многочлена существует обратный, с противоположными коэффициентами. Он находится в $(x,2)$, так как $2|(-a)$, где $a$ - свободный член. \\
+	\tab 3) Замкнутость относительно сложения, так как сумма четных свободных членов будет четна. \\
+	2. Покажем, что $(x, 2)$ - идеал: \\
+	$\forall z \in \mathbb Z[x]$ и $\forall i \in (x, 2)$ (так как умножение в кольце коммутативно, то достаточно рассмотреть адин из идеалов, б.о.о. рассмотрим левосторонний идеал), тогда очевидно, что $ir \in (x,2)$, так как свободный член будет четным (из-за четности свободного члена в $i$). \\
+	3. Предположим, что $(x,2)$ - главный идеал, то есть $(x,2) = (h(x))$, где $h(x)$ - некоторый порождающий многочлен $\Rightarrow (h(x)) = k(x)h(x) = xf(x) + 2g(x)$. Примем $f(x) = 0, g(x) = 1 \Rightarrow k(x)h(x) = 2 \Rightarrow h(x)|2 \Rightarrow 
+	\left[ 
+		\begin{gathered} 
+			h(x) = \pm 1 \\ 
+			h(x) = \pm 2 \\ 
+		\end{gathered} 
+	\right.$ \\
+	\tab 1)  Если $h(x) = \pm 1$, то $(h(x)) = (\pm1) = \mathbb Z[x]$, но $(h(x)) = (x, 2) \Rightarrow h(x) = \pm 1$ - не подходит. \\
+	\tab 2)  Если $h(x) = \pm 2$, то $(h(x)) = (\pm2) \Rightarrow k(x)(\pm2) = x + 2$, но такого $k(x) \in \mathbb Z[x]$ не существует $\Rightarrow h(x) = \pm 2$ - не подходит. \\
+	Таким образом, наше предположение неверно, и $(x, 2)$ -  не является главным идеалом. \\
+	
+	\textbf{№3} \\
+	
+	Найдем размерность $\mathbb R$-алгебры $\mathbb R[x]/(x^3 - x^2 + 2)$. С помощью теоремы о гомоморфизме колец, рассмотрим элементы фактор кольца $\mathbb R[x]/(x^3 - x^2 + 2)$. Теперь рассмотрим $(x^3 - x^2 + 2)$ как ядро некоторого гомоморфизма по взятию остатка, то есть представим наши элементы как остатки от деления многочленов $\mathbb R[x]$ на $(x^3 - x^2 + 2)$. Тогда $\mathbb R[x]/(x^3 - x^2 + 2) \cong Q(x)$ (как образ гомоморфизма), где $Q(x) = ax^2 + bx + c$ - некоторый многочлен - остаток, полученный при делении на $(x^3 - x^2 + 2)$. Возьмем его стандартный базис, он будет выглядеть так: $(x^2, x, 1)$, отсюда следует, что размерность составляет 3. Таким образом, по изоморфности, размерность $\mathbb R$-алгебры $\mathbb R[x]/(x^3 - x^2 + 2)$ равна 3. \\
+	
+	\textbf{№4} \\
+	
+	По теореме о гомоморфизме колец $F/Ker(\varphi) \cong Im(\varphi)$. Так как поле является простым кольцом, то $Ker(\varphi)$ - несобственный идеал. Так как в $F$ нет собственных идеалов, то: \\
+	$\bullet$ либо $Ker(\varphi) = 0 \Rightarrow$ (по лемме с лекции) $\varphi$ - инъективно $\Rightarrow Im(\varphi) \cong F$ \\
+	$\bullet$ либо $Ker(\varphi) = F \Rightarrow Im(\varphi) \cong F/Ker(\varphi) \cong F/F \cong \{0\} \Rightarrow \varphi(x) = 0$ $\forall x \in F$ \\
+	
+\end{document}

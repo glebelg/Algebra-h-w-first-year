@@ -1,0 +1,145 @@
+\documentclass[a4paper, 12pt]{article}
+\usepackage{cmap}
+\usepackage[utf8]{inputenc}
+\usepackage[T2A]{fontenc}
+\usepackage[english,russian]{babel}
+\usepackage[left=2cm, right=2cm, top=1cm, bottom=2cm]{geometry}
+\usepackage{indentfirst}
+\usepackage{amsmath, amsfonts, amsthm, mathtools, amssymb, icomma, units, yfonts}
+\usepackage{amsthm}
+\usepackage{algorithmicx, algorithm}
+\usepackage{algpseudocode}
+\usepackage{relsize}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{esvect}
+\usepackage{enumerate}
+\usepackage{multirow}
+\usepackage{bbm}
+\usepackage{polynom}
+\usepackage{mathtext}
+\usepackage{scrextend}
+
+\usetikzlibrary{calc,matrix}
+\usetikzlibrary{shapes.misc}
+
+\mathtoolsset{showonlyrefs=true}
+
+\makeatletter
+
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\me}{\mathbbm{e}}
+\newcommand{\mf}{\mathbbm{f}}
+\newcommand{\Ker}{\text{Ker}}
+\newcommand{\Mat}{\text{Mat}}
+\newcommand{\rk}{\text{rk}}
+\renewcommand{\Im}{\text{Im}}
+\newcommand\tab[1][1cm]{\hspace*{#1}}
+
+\begin{document}
+	\title{Д/з - 9}
+	\author{Чистяков Глеб, группа 167}
+	\date{13 июня 2017 г.}
+	
+	\maketitle
+	
+	\textbf{№1} \\
+	
+	$\mathbb{F}_8 = \mathbb{F}_{2^3} = \mathbb{F}_2[x]/(f(x))$, где $f(x)$ -- неприводимый над $\mathbb{F}_2$ и $deg(f(x)) = 3$. \\
+	Перечислим все многочлены: \\
+	$\bullet$ $x^3$ -- приводимый \\
+	$\bullet$ $x^3 + 1$ -- приводимый \\
+	$\bullet$ $x^3 + x$ -- приводимый \\
+	$\bullet$ $x^3 + x^2$ -- приводимый \\
+	$\bullet$ $x^3 + x + 1$ -- неприводимый \\
+	$\bullet$ $x^3 + x^2 + 1$ -- неприводимый \\
+	$\bullet$ $x^3 + x^2 + x$ -- приводимый \\
+	$\bullet$ $x^3 + x^2 + x + 1$ -- приводимый \\
+	Рассмотрим $S(x)+(x^3+x+1)$, где $S(x)$: $0, 1, x, x+1, x^2, x^2+1, x^2+x, x^2+x+1$ \\
+	\begin{addmargin}[-3.5em]{0em}
+		$\begin{array}{|c||c|c|c|c|c|c|c|c|} \hline
+			+       & 0       & 1       & x       & x+1     & x^2     & x^2+1   & x^2+x   & x^2+x+1 \\
+			\hline
+			\hline
+			0       & 0       & 1       & x       & x+1     & x^2     & x^2+1   & x^2+x   & x^2+x+1 \\
+			\hline
+			1       & 1       & 0       & x+1     & x       & x^2+1   & x^2     & x^2+x+1 & x^2+x   \\
+			\hline
+			x       & x       & x+1     & 0       & 1       & x^2+x   & x^2+x+1 & x^2     & x^2+1   \\
+			\hline
+			x+1     & x+1     & x       & 1       & 0       & x^2+x+1 & x^2+x   & x^2+1   & x^2     \\
+			\hline
+			x^2     & x^2     & x^2+1   & x^2+x   & x^2+x+1 & 0       & 1       & x       & x+1     \\
+			\hline
+			x^2+1   & x^2+1   & x^2     & x^2+x+1 & x^2+x   & 1       & 0       & x+1     & x       \\
+			\hline
+			x^2+x   & x^2+x   & x^2+x+1 & x^2     & x^2+1   & x       & x+1     & 0       & 1       \\
+			\hline
+			x^2+x+1 & x^2+x+1 & x^2+x   & x^2+1   & x^2     & x+1     & x       & 1       & 0       \\
+			\hline
+		\end{array}$ \\\\
+	\end{addmargin}
+
+	\begin{addmargin}[-1.5em]{0em}
+		$\begin{array}{|c||c|c|c|c|c|c|c|c|} \hline
+			\times  & 0 & 1		  & x 		& x+1 	  & x^2 	& x^2+1   & x^2+x   & x^2+x+1 \\
+			\hline
+			\hline
+			0       & 0 & 0		  & 0		& 0  	  & 0       & 0       & 0       & 0       \\
+			\hline
+			1       & 0 & 1		  & x       & x+1     & x^2     & x^2+1   & x^2+x   & x^2+x+1 \\
+			\hline
+			x       & 0 & x		  & x^2     & x^2+x   & x+1     & 1       & x^2+x+1 & x^2+1   \\
+			\hline
+			x+1     & 0 & x+1	  & x^2+x   & x^2+1   & x^2+x+1 & x^2     & 1       & x       \\
+			\hline
+			x^2     & 0 & x^2     & x+1     & x^2+x+1 & x^2+x   & 1       & x^2+1   & 1       \\
+			\hline
+			x^2+1   & 0 & x^2+1   & 1	    & x^2     & 1   	& x^2+x+1 & x+1     & x^2+x   \\
+			\hline 
+			x^2+x   & 0 & x^2+x   & x^2+x+1 & 1		  & x^2+1   & x+1     & x       & x^2     \\
+			\hline 
+			x^2+x+1 & 0 & x^2+x+1 & x^2+1   & x		  & 1		& x^2+1   & x^2     & x+1     \\
+			\hline
+		\end{array}$ \newpage
+	\end{addmargin}
+
+	
+	\textbf{№2} \\
+	
+	Реализуем поле $\F_9$ в виде $\Z_3[x]/(x^2+1)$. А теперь рассмотрим элементы, являющиеся порождающими циклической группы $\F_9^{\times}$: \\
+	Порядки каждого элемента, за исключением нуля, будут: \\
+	$\bullet$ $1^1 = 1$ \\
+	$\bullet$ $2^2 = 4 = 1$ \\
+	$\bullet$ $x^4 = 1$ \\
+	$\bullet$ $(x+1)^8 = 1$ \\
+	$\bullet$ $(x+2)^8 = 1$ \\
+	$\bullet$ $(2x)^4 = 1$ \\
+	$\bullet$ $(2x+1)^8 = 1$ \\
+	$\bullet$ $(2x+2)^8 = 1$ \\
+	В силу того, что мы можем рассматривать $\F_9 \cong \Z_8$, то порождающими элементами циклической группы $\F_9^{\times}$ будут элементы порядка 8, а именно -- $x+1, x+2, 2x+1, 2x+2$. \\
+	
+	
+	
+	\textbf{№3} \\
+	
+	Проверим многочлены $x^2+1$ и $y^2-y-1$ на неприводимость над $\Z[3]$: \\
+	Подставляем  $0, 1, 2$ и видим, что они не являются корнями этих многочленов $\Rightarrow$ многочлены неприводимые.
+	
+	Установим изоморфизм $\Z_3[x]/(x^2+1)\cong\Z_3[y]/(y^2-y-1)$: \\
+	$0\longrightarrow0$ \\
+	$1\longrightarrow1$ \\
+	$2\longrightarrow2$ \\
+	$x\longrightarrow a$ \\
+	Здесь нам достаточно рассмотреть только $x$, так как если $x\longrightarrow a$, то $x^2+1\longrightarrow a^2+1$, то есть мы сможем так выразить все элементы. \\
+	Рассмотрим $x^2+1=0$, то есть $a^2+1=0$: пусть $a = y+1 \Rightarrow$ \\
+	$(y+1)^2+1=0 \Leftrightarrow y^2+2y+2=0 \Leftrightarrow y^2-y-1=0$ \\
+	Таким образом, мы явно установили изоморфизм $\Z_3[x]/(x^2+1)\cong\Z_3[y]/(y^2-y-1)$.
+	
+
+\end{document}

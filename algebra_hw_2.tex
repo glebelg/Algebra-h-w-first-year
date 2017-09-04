@@ -1,0 +1,138 @@
+\documentclass[a4paper, 12pt]{article}
+
+\usepackage[T2A]{fontenc}			% кодировка
+\usepackage[utf8]{inputenc}			% кодировка исходного текста
+\usepackage[english,russian]{babel}	% локализация и переносы
+
+\usepackage{amsmath}
+\usepackage{icomma} 				% "Умная" запятая
+\usepackage{amsfonts}
+
+\sloppy
+\usepackage[T2A]{fontenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\graphicspath{{pictures/}}
+\DeclareGraphicsExtensions{.pdf,.png,.jpg}
+
+\newcommand{\ip}[2]{(#1, #2)}
+
+\title{Д/з - 2}
+\author{Чистяков Глеб, группа 167}
+\date{\today}
+
+\begin{document}
+	
+	\maketitle
+	
+	\textbf{№1} \\
+	
+	Известно, что $|A_4| = \frac{4!}{2}$ - так как $A_4$ - группа четных перестановок. $H = \{id, (12)(34)\}$ - подгруппа, $|H| = 2 \Rightarrow [A_4:H] = 6$ по теореме Лагранжа, то есть имеется 6 левых и 6 правых смежных классов.
+	
+	При умножении любой перестоновки на $id$ получится та же перестановка, поэтому будем считать, что каждый левый и правый класс по перестановке $g$ будет включать в себя $g$. \\
+	
+	
+	Рассмотрим левый смежный класс: \\
+	$g \circ (12)(34):$ \\
+	$id \circ (12)(34) = (12)(34)$ \\
+	$(1)(234) \circ (12)(34) = (132)(4)$ \\
+	$(1)(243) \circ (12)(34) = (142)(3)$ \\
+	$(2)(134) \circ (12)(34) = (123)(4)$ \\
+	$(2)(143) \circ (12)(34) = (124)(3)$ \\
+	$(3)(124) \circ (12)(34) = (143)(2)$ - было \\
+	$(3)(142) \circ (12)(34) = (243)(1)$ - было \\
+	$(4)(123) \circ (12)(34) = (134)(2)$ - было \\
+	$(4)(132) \circ (12)(34) = (234)(1)$ - было \\
+	$(12)(34) \circ (12)(34) = id$ - было \\
+	$(13)(24) \circ (12)(34) = (14)(23)$ \\
+	$(14)(23) \circ (12)(34) = (13)(24)$ - было \\
+	
+		Рассмотрим правый смежный класс: \\
+	$(12)(34) \circ g:$ \\
+	$(12)(34) \circ id = (12)(34)$ \\
+	$(12)(34) \circ (1)(234) = (124)(3)$ \\
+	$(12)(34) \circ (1)(243) = (123)(4)$ \\
+	$(12)(34) \circ (2)(134) = (142)(3)$ \\
+	$(12)(34) \circ (2)(143) = (132)(4)$ \\
+	$(12)(34) \circ (3)(124) = (234)(1)$ - было \\
+	$(12)(34) \circ (3)(142) = (134)(2)$ - было \\
+	$(12)(34) \circ (4)(123) = (243)(1)$ - было \\
+	$(12)(34) \circ (4)(132) = (143)(2)$ - было \\
+	$(12)(34) \circ (12)(34) = id$ - было \\
+	$(12)(34) \circ (13)(24) = (14)(23)$ \\
+	$(12)(34) \circ (14)(23) = (13)(24)$ - было \\
+	
+	Из этого всего видно, $H$ не является нормальной, так как не для каждой перестановки из группы $A_4$ левый и правый смежные классы совпадают. \\
+	
+	\textbf{№2} \\
+	
+	Известно, что $SL_2(\mathbb Z)$ - группа всех целочисленных $(2\times2)$ - матриц с определителем 1. Теперь докажем, что множество $H = \{
+	\begin{pmatrix}
+	a & b \\
+	c & d  
+	\end{pmatrix} \in SL_2(\mathbb Z) \arrowvert \\ a \equiv d \equiv 1 (mod 3); c \equiv b \equiv 0 (mod 3)\}$ является подгруппой:
+	
+	Возьмем матрицу
+	$A = \begin{pmatrix}
+	a & b \\
+	c & d  
+	\end{pmatrix} \in H$ и рассмотрим $
+	A^{-1} = \begin{pmatrix}
+	a' & b' \\
+	c' & d'  
+	\end{pmatrix}$, тогда $A^{-1}= \dfrac{1}{detA}
+	\begin{pmatrix}
+	d & -b \\
+	-c & a  
+	\end{pmatrix} \Rightarrow a' = d, b' = -d, c' = -c, d' = a \Rightarrow \\\\
+	a' \equiv d' \equiv 1 (mod 3); c' \equiv b' \equiv 0 (mod 3) \Rightarrow \forall A \in H$ $ \exists A^{-1} \in H$.
+	
+	Рассмотрим матрицы $A = \begin{pmatrix}
+	a_1 & b_1 \\
+	c_1 & d_1 
+	\end{pmatrix}$ и $B = \begin{pmatrix}
+	a_2 & b_2 \\
+	c_2 & d_2 
+	\end{pmatrix}, A, B \in H$, тогда $AB = \begin{pmatrix}
+		a_1a_2 + b_1c_2 &  a_1b_2+ b_1d_2 \\
+		c_1a_2 + d _1c_2 & c_1b_2 + d_1d_2
+	\end{pmatrix}$. \\
+	 Здесь $a_1a_2 \equiv 1 (mod 3),
+	 b_1c_2 \equiv 0 (mod 3) \Rightarrow a_1a_2 + b_1c_2 \equiv 1 (mod 3)$.\\ 
+	 Аналогично $a_1b_2+ b_1d_2 \equiv 0 (mod 3), c_1a_2 + d _1c_2 \equiv 0 (mod 3), c_1b_2 + d_1d_2 \equiv \\ \equiv 1 (mod 3) \Rightarrow \forall A, B \in H \Rightarrow AB \in H$.
+	 
+	 Из вышеперечисленного видно существование нейтрального элемента. Таким образом множество $H$ является подгруппой. \\
+	 
+	 Теперь докажем $A \in SL_2(\mathbb Z), B \in H: ABA^{-1} \in H$ \\
+	 $A = \begin{pmatrix}
+	 	a_1 & b_1 \\
+	 	c_1 & d_1 
+	 \end{pmatrix}, B = \begin{pmatrix}
+	 	a_2 & b_2 \\
+	 	c_2 & d_2 
+	 \end{pmatrix}, A^{-1} = \begin{pmatrix}
+	 d_1 & -b_1 \\
+	 -c_1 & a_1 
+	 \end{pmatrix} \Rightarrow \\ ABA^{-1} = \begin{pmatrix}
+	 (a_1a_2 + b_1c_2)d_1 - (a_1b_2+ b_1d_2)c_1 & -(a_1a_2 + b_1c_2)b_1 + (a_1b_2+ b_1d_2)a_1 \\
+	 (c_1a_2 + d _1c_2)d_1 - (c_1b_2 + d_1d_2)c_1 & -(c_1a_2 + d _1c_2)b_1 + (c_1b_2 + d_1d_2)a_1
+	 \end{pmatrix}$ \\
+	
+	Здесь, для наглядности, распишим первый элемент получившейся матрицы, остальные же будут выводиться по аналогичной логике: \\\\
+	$(a_1a_2 + b_1c_2)d_1 - (a_1b_2+ b_1d_2)c_1 = a_1a_2d_1 + b_1c_2d_1 - a_1b_2c_1 - b_1d_2c_1 :
+	b_1c_2d_1 \equiv 0 (mod 3), a_1b_2c_1 \equiv 0 (mod 3)$ и так как $a_2 \equiv d_2 (mod 3)$ и $a_1d_1 - b_1c_1 = detA = 1 \Rightarrow (a_1a_2 + b_1c_2)d_1 - (a_1b_2+ b_1d_2)c_1 \equiv 1 (mod 3)$ \\ a так же: \\
+	$-(a_1a_2 + b_1c_2)b_1 + (a_1b_2+ b_1d_2)a_1 \equiv 0 (mod 3)$ \\
+	$(c_1a_2 + d _1c_2)d_1 - (c_1b_2 + d_1d_2)c_1 \equiv 0 (mod 3)$ \\
+	$-(c_1a_2 + d _1c_2)b_1 + (c_1b_2 + d_1d_2)a_1 \equiv 1 (mod 3)$ \\
+	
+	Таким образом, $ABA^{-1} \in H$, а следовательно $H$ является нормальной подгруппой в $SL_2(\mathbb Z)$. \\
+	
+	\textbf{№3} \\
+	
+	Рассмотрим гомоморфизм $\varphi : \mathbb Z_{12} \longrightarrow \mathbb Z_{16} \Longrightarrow \varphi(e_{Z_{12}}) = e_{Z_{16}}$, то есть $\varphi(0) = 0$. Также можно заметить, что $\varphi(0) = \varphi(12)$. Из определения следует, что $\varphi(12) = 12\varphi(1)$, тогда нужно определть такие $\varphi(1)$, что $12\varphi(1) \equiv 0 (mod 16)$. Очевидно, чтобы это выполнялось, числа, по модулю 16, должны быть кратны четырем, то есть $\varphi(1) \in \{0, 4, 8, 12\}$. Рассмотрим отображения от $z, z' \in Z_{12}$, причем $z = z'$, тогда по определению $\varphi(z - z') = \varphi(z) - \varphi(z')$, так как $\varphi(z - z') = \varphi(0) = 0 \Longrightarrow \varphi(z) - \varphi(z') = 0 \Longrightarrow \varphi(z) = \varphi(z') \Longrightarrow$ все определенно корректно. \\
+	
+	\textbf{№4} \\
+	
+	Рассмотрим группу $G$. Если $G$ - бесконечная, то $\exists H \in G$ - бесконечная циклическая погруппа, то есть $H \simeq \mathbb Z$ (Пусть $H = <h>$, тогда изоморфизм устанавливает отбражение $<h> \longrightarrow \mathbb Z, h^k \longrightarrow k) \Rightarrow G \simeq \mathbb Z$. Если же $G$ - конечная, то $G \simeq \mathbb Z_n$ (Пусть $G = <g>$, тогда изоморфизм устанавливает отбражение $<g> \longrightarrow \mathbb Z_n, g^k \longrightarrow k$ $(mod$ $n)$). Но в группе $\mathbb Z_n$ не будет нетривиальных подгрупп, когда $n$ - простое, следовательно $n = p$. Таким образом, группы, изоморфные любой своей неединичной подгруппе: бесконечная циклическая, а также конечная циклическая простого порядка и непосредственно сама единичная группа.
+	
+\end{document}

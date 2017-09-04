@@ -1,0 +1,83 @@
+\documentclass[a4paper, 12pt]{article}
+\usepackage{cmap}
+\usepackage[utf8]{inputenc}
+\usepackage[T2A]{fontenc}
+\usepackage[english,russian]{babel}
+\usepackage[left=2cm, right=2cm, top=1cm, bottom=2cm]{geometry}
+\usepackage{indentfirst}
+\usepackage{amsmath, amsfonts, amsthm, mathtools, amssymb, icomma, units, yfonts}
+\usepackage{amsthm}
+\usepackage{algorithmicx, algorithm}
+\usepackage{algpseudocode}
+\usepackage{relsize}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{esvect}
+\usepackage{enumerate}
+\usepackage{multirow}
+\usepackage{bbm}
+\usepackage{polynom}
+\usepackage{mathtext}
+
+\usetikzlibrary{calc,matrix}
+\usetikzlibrary{shapes.misc}
+
+\mathtoolsset{showonlyrefs=true}
+
+\makeatletter
+
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\me}{\mathbbm{e}}
+\newcommand{\mf}{\mathbbm{f}}
+\newcommand{\Ker}{\text{Ker}}
+\newcommand{\Mat}{\text{Mat}}
+\newcommand{\rk}{\text{rk}}
+\renewcommand{\Im}{\text{Im}}
+\newcommand\tab[1][1cm]{\hspace*{#1}}
+
+
+
+
+\begin{document}
+	\title{Д/з - 8}
+	\author{Чистяков Глеб, группа 167}
+	\date{8 июня 2017 г.}
+	
+	\maketitle
+	
+	\textbf{№1} \\
+	
+	$\alpha$ -- комплексный корень многочлена $x^3 - 3x + 1 \Rightarrow \alpha^3-3\alpha+1 = 0$. Тогда представим элемент $\dfrac{\alpha^4-\alpha^3+4\alpha+3}{\alpha^4+\alpha^3-2\alpha^2+1} \in \Q(\alpha)$ в виде $f(\alpha)$, где $f(x) \in\Q[x]$ и $degf(x) \leqslant 2$: \\\\\\
+	Пусть $h(\alpha) = \alpha^4-\alpha^3+4\alpha+3, g(\alpha) = \alpha^4+\alpha^3-2\alpha^2+1, \mu(\alpha) = \alpha^3-3\alpha+1$, тогда найдем НОД($g(\alpha), \mu(\alpha)$): \\
+	$\bullet$ $\alpha^4+\alpha^3-2\alpha^2+1 = (\alpha^3-3\alpha+1)(\alpha+1) + \alpha^2+2\alpha$ \\
+	$\bullet$ $\alpha^3-3\alpha+1 = (\alpha^2+2\alpha)(\alpha-2) + \alpha+1$ \\
+	$\bullet$ $\alpha^2+2\alpha = (\alpha+1)(\alpha+1) - 1 \Rightarrow$
+	$$-1 = (\alpha^2+2\alpha)-(\alpha+1)(\alpha+1)=$$
+	$$=(\alpha^2+2\alpha)-(\mu(\alpha)-(\alpha-2)(\alpha^2+2\alpha))(\alpha+1)=$$
+	$$=(\alpha^2+2\alpha)-\mu(\alpha)(\alpha+1)+(\alpha-2)(\alpha+1)(\alpha^2+2\alpha)=$$
+	$$=g(\alpha)-2\mu(\alpha)(\alpha+1)+(\alpha-2)(\alpha+1)(g(\alpha)-\mu(\alpha)(\alpha+1))=$$
+	$$=g(\alpha)-2\mu(\alpha)(\alpha+1)+g(\alpha)(\alpha-2)(\alpha+1)-\mu(\alpha)(\alpha+1)^2(\alpha-2)=$$
+	$$=g(\alpha)(\alpha^2-\alpha-1)-\mu(\alpha)(2\alpha+2+(\alpha+1)^2(\alpha-2) \Rightarrow$$
+	$$\dfrac{h(\alpha)}{g(\alpha)}\cdot\underbrace{(\mu(\alpha)}_0(2\alpha+2+(\alpha+1)^2(\alpha-2))-g(\alpha)(\alpha^2-\alpha-1)=$$
+	$$=-h(\alpha)(\alpha^2-\alpha-1)=(\alpha^4-\alpha^3+4\alpha+3)(\alpha^2-\alpha-1)=\alpha^6+2\alpha^4-5\alpha^3+\alpha^2+7\alpha+3 =$$ $$=(-\alpha^3+2\alpha^2-3\alpha+2)\underbrace{(\alpha^3-3\alpha+1)}_0-10\alpha^2+16\alpha+1 = -10\alpha^2+16\alpha+1 \Rightarrow$$
+	$f(x) = -10x^2+16x+1$ \\
+	
+	\textbf{№2} \\
+	
+	Найдем минимальный многочлен числа $a = \sqrt{3} - \sqrt{5}$ над $\Q$:\\
+	$$a^2 = (\sqrt{3} - \sqrt{5})^2 = 8 - 2\sqrt{15}$$
+	$$a^2 - 8 = -2\sqrt{15}$$
+	$$(a^2 - 8)^2 = (-2\sqrt{15})^2$$
+	$$a^4 - 16a^2 + 64 = 60$$
+	$$a^4 - 16a^2 + 4 = 0$$
+	$f(x) = x^4 - 16x^2 + 4$ -- с корнями: $\sqrt{3} - \sqrt{5}, \sqrt{3} + \sqrt{5}, -\sqrt{3} - \sqrt{5}, -\sqrt{3} + \sqrt{5}$. Можно заметить, что корни рациональные, а следовательно множители при разложении многочлена неприводимые $\Rightarrow$ многочлен 4-ой степени, который мы нашли -- минимальный.\\
+	
+	\textbf{№4} \\
+
+	$F = \mathbb C(x)$ -- поле рациональных дробей и $K = \mathbb C(y)$, где $y = x+\dfrac{1}{x} \Leftrightarrow x^2-xy+1=0$. Пусть $x$ -- некоторая рациональная дробь $x = \dfrac{Q_1}{Q_2}$, где $Q_1$ и $Q_2$ -- многочлены от $y$. Можно заметить, что при стремлении $x$ к $\pm i$, $y$ будет стремиться к $0$. Но тогда мы получим различные значения пределов относительно знака равенства, то есть в левой части мы имеем $\pm i$, а в правой только $0 \Rightarrow x \notin \mathbb C(y) \Rightarrow$ степень расширения $[F:K]$ равна 2. \\
+
+\end{document}

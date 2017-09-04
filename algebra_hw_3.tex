@@ -1,0 +1,79 @@
+\documentclass[a4paper, 12pt]{article}
+
+\usepackage[T2A]{fontenc}			% кодировка
+\usepackage[utf8]{inputenc}			% кодировка исходного текста
+\usepackage[english,russian]{babel}	% локализация и переносы
+
+\usepackage{amsmath}
+\usepackage{icomma} 				% "Умная" запятая
+\usepackage{amsfonts}
+
+\sloppy
+\usepackage[T2A]{fontenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\graphicspath{{pictures/}}
+\DeclareGraphicsExtensions{.pdf,.png,.jpg}
+
+\newcommand{\ip}[2]{(#1, #2)}
+
+\title{Д/з - 3}
+\author{Чистяков Глеб, группа 167}
+\date{\today}
+
+\begin{document}
+	
+	\maketitle
+	
+	\textbf{№1} \\
+	
+	Рассмотрим группы $\mathbb Z_3, \mathbb Z_4, \mathbb Z_6:$ \\
+	Элементы $\mathbb Z_3 - 0, 1, 2$ \\
+	Элементы $\mathbb Z_4 - 0, 1, 2, 3$ \\
+	Элементы $\mathbb Z_6 - 0, 1, 2, 3, 4, 5$
+	
+	Тогда составим следующую табличку элементов для 2, 3, 4 и 6 - го порядков: \\
+	\begin{tabular}{|c|r|r|r|} \hline
+	Порядок:  & $ \mathbb Z_3 $ & $ \mathbb Z_4 $ & $ \mathbb Z_6 $  \\ \hline
+	2 & 0 & 0, 2 & 0, 3  \\ \hline
+	3 & 0, 1, 2 & 0 & 0, 2, 4  \\ \hline
+	4 & 0 & 0, 1, 2, 3 & 0, 3 \\ \hline
+	6 & 0, 1, 2 & 0, 2 & 0, 1, 2, 3, 4, 5 \\ \hline
+	\end{tabular} \\
+
+	Тогда $\mathbb Z_3 \times \mathbb Z_4 \times \mathbb Z_6$ порядка $k$ - всевозможные тройки из элементов каждой ячейки в одной строчке нашей таблички, кроме тройки единичного порядка и троек из элементов кратных порядков, то есть $\mathbb Z_3 \times \mathbb Z_4 \times \mathbb Z_6$ \\
+	для 2 порядка: $(0, 2, 0), (0, 0, 3), (0, 2, 3)$ - $1 \times 2 \times 2 - 1 = 3$ - тройки\\
+	для 3 порядка: $3 \times 1 \times 3 - 1 = 8$ - троек \\
+	для 4 порядка: $1 \times 4 \times 2 - 1 - 3 = 4$ - троек \\
+	для 6 порядка: $3 \times 2 \times 6 - 1 - 3 - 8 = 24$ - тройки \\
+	\newline\newline\newline\newline\newline\newline\newline
+	
+	\textbf{№2} \\
+	
+	Пусть $G$ - это нециклическая абелева группа порядка 45. Из теоремы знаем, что любая конечная абелева группа, есть прямая  сумма примарных циклических групп $(p^\alpha)$, $p$ - простое, причем такое разложение единственно с точностью до перестановки. Тогда $G$ представимо в виде $\mathbb Z_3 \times \mathbb Z_3 \times \mathbb Z_5 \simeq \mathbb Z_3 \times \mathbb Z_{15}$ - нециклическое, так как $(3, 15) = 3 \neq 1$. Разложение же $\mathbb Z_9 \times \mathbb Z_5$ - не подходит, так как $\mathbb Z_9 \times \mathbb Z_5 \simeq \mathbb Z_{45}$, которая циклическая.
+	
+	Рассмотрим группы $\mathbb Z_3, \mathbb Z_3, \mathbb Z_5:$ \\
+	Элементы $\mathbb Z_3 - 0, 1, 2$ \\
+	Элементы $\mathbb Z_5 - 0, 1, 2, 3, 4$
+	
+	Тогда составим следующую табличку элементов для 3, 5 и 15 - го порядков: \\
+	\begin{tabular}{|c|r|r|r|} \hline
+		Порядок:  & $ \mathbb Z_3 $ & $ \mathbb Z_3 $ & $ \mathbb Z_5 $  \\ \hline
+		3 & 0, 1, 2 & 0, 1, 2 & 0  \\ \hline
+		5 & 0 & 0 & 0, 1, 2, 3, 4 \\ \hline
+		15 & 0, 1, 2 & 0, 1, 2 & 0, 1, 2, 3, 4 \\ \hline
+	\end{tabular} \\
+
+	Тогда, аналогично №1, элементов в $\mathbb Z_3 \times \mathbb Z_3 \times \mathbb Z_5$ \\
+	для 3 порядка: $3 \times 3 \times 1 - 1 = 8$ - троек \\
+	для 5 порядка: $1 \times 1 \times 5 - 1 = 4$ - тройки \\
+	для 15 порядка: $3 \times 3 \times 5 - 1 - 8 - 4 = 32$ - тройки
+	
+	Таким образом, в силу того, что подгруппы простого порядка не пересекаются, и известно, что в погруппе $k$-го порядка $\varphi(k)$ - образующих, то подгрупп порядка 6: $8 / 2 = 4$, и следовательно в подгруппе порядка 15 $\varphi(15)$ - образующих, то есть $\varphi(15) = 2 \cdot 4 = 8 \Rightarrow$ всего подгрупп порядка 15:  $32 / 8 = 4$. \\
+	
+	\textbf{№3} \\
+	
+	Имеем $G = \mathbb Z \times \mathbb Z$. Тогда найдем такую подгруппу $H$, что $G/H \simeq \mathbb Z_{10} \times \mathbb Z_{12} \times \mathbb Z_{15}$. Мы знаем, что $\mathbb Z_n \simeq \mathbb Z_m \times \mathbb Z_k$, где $n = mk$ и $(m, k) = 1$. То есть $\mathbb Z_{10} \times \mathbb Z_{12} \times \mathbb Z_{15} \simeq \mathbb Z_2 \times \mathbb Z_5 \times \mathbb Z_2 \times \mathbb Z_2 \times \mathbb Z_3 \times \mathbb Z_3 \times \mathbb Z_5 \simeq \mathbb Z_{30} \times \mathbb Z_{60}$. Представим $H = H_1 \times H_2$, тогда по теореме о факторизации по сомножителям получаем $(\mathbb Z \times \mathbb Z_{30})/(H_1 \times H_2) \simeq \mathbb Z/H_1 \times \mathbb Z/H_2 \simeq \mathbb Z_{30} \times \mathbb Z_{60}$. Рассмотрим некоторые порождающие элементы $z_1, z_2 \in \mathbb Z$, что $<z_1> \simeq \mathbb Z$ и $<z_2> \simeq \mathbb Z$. Тогда возьмем $H_1 = <z^{30}_1>$ и $H_2 = <z^{60}_2>$. Таким образом, наша искомая подгруппа $H = <z^{30}_1> \times <z^{60}_2>$. \\
+	
+	
+\end{document}

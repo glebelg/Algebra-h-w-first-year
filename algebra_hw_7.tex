@@ -1,0 +1,166 @@
+\documentclass[a4paper, 12pt]{article}
+\usepackage{cmap}
+\usepackage[utf8]{inputenc}
+\usepackage[T2A]{fontenc}
+\usepackage[russian]{babel}
+\usepackage[left=2cm, right=2cm, top=1cm, bottom=2cm]{geometry}
+\usepackage{indentfirst}
+\usepackage{amsmath, amsfonts, amsthm, mathtools, amssymb, icomma, units, yfonts}
+\usepackage{amsthm}
+\usepackage{algorithmicx, algorithm}
+\usepackage{algpseudocode}
+\usepackage{relsize}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{esvect}
+\usepackage{enumerate}
+\usepackage{multirow}
+\usetikzlibrary{calc,matrix}
+\usetikzlibrary{shapes.misc}
+
+\makeatletter
+\newenvironment{sqcases}{%
+    \matrix@check\sqcases\env@sqcases
+}{%
+    \endarray\right.%
+}
+\def\env@sqcases{%
+    \let\@ifnextchar\new@ifnextchar
+    \left\lbrack
+    \def\arraystretch{1.2}%
+    \array{@{}l@{\quad}l@{}}%
+}
+\makeatother
+
+\DeclareRobustCommand{\divby}{%
+    \mathrel{\text{\vbox{\baselineskip.65ex\lineskiplimit0pt\hbox{.}\hbox{.}\hbox{.}}}}
+}
+
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\me}{\mathbbm{e}}
+\newcommand{\mf}{\mathbbm{f}}
+\newcommand{\Ker}{\text{Ker}}
+\newcommand{\Mat}{\text{Mat}}
+\newcommand{\rk}{\text{rk}}
+\renewcommand{\Im}{\text{Im}}
+\newcommand\tab[1][1cm]{\hspace*{#1}}
+\usepackage{bbm}  % \mathbbm{}
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+        \node[shape=circle,draw,inner sep=1.5pt] (char) {#1};}}
+\newcommand*\roundrect[1]{
+    \begin{tikzpicture}[baseline=(char.base)]
+    \node(char)[draw,fill=white,
+    shape=rounded rectangle,
+    minimum width=1.8cm]
+    {#1};
+    \end{tikzpicture}}
+
+\begin{document}
+	\title{Д/з - 7}
+	\author{Чистяков Глеб, группа 167}
+	\date{1 июня 2017 г.}
+	
+	\maketitle
+	
+	\textbf{№1} \\
+	
+	Имеем симметрический многочлен \\ $f(x_1, x_2, x_3, x_4) = (x_1 + x_2)(x_1 + x_3)(x_1 + x_4)(x_2 + x_3)(x_2 + x_4)(x_3 + x_4)$. Рассмотрим его старшие члены $L(f)$: \\
+	\tab Зная, что элементарные симметрические многочлены -- \\
+	$\sigma_1 = x_1 + x_2 + x_3 + x_4$ \\
+	$\sigma_2 = x_1x_2 + x_1x_3 + x_1x_4 + x_2x_3 + x_2x_4 + x_3x_4$ \\ 
+	$\sigma_3 = x_1x_2x_3 + x_1x_2x_4 + x_1x_3x_4 + x_2x_3x_4$ \\
+	$\sigma_4 = x_1x_2x_3x_4$ \\
+	\tab Тогда получаем: \\
+	$\bullet$ $x_1^3x_2^3 \rightarrow \sigma_2^3$ \\
+	$\bullet$ $x_1^3x_2^2x_3 \rightarrow \sigma_1\sigma_2\sigma_3$ \\
+	$\bullet$ $x_1^3x_2x_3x_4 \rightarrow \sigma_1^2\sigma_4$ \\
+	$\bullet$ $x_1^2x_2^2x_3^2 \rightarrow \sigma_3^2$ \\
+	$\bullet$ $x_1^2x_2^2x_3x_4\rightarrow \sigma_2\sigma_4$ \\
+	Следовательно $f = a\sigma_2^3 + \sigma_1\sigma_2\sigma_3 + b\sigma_1^2\sigma_4 + c\sigma_3^2 + d\sigma_2\sigma_4$ \\
+	Осталось найти коэффициенты $a,b$ и $c$: \\
+	$\begin{array}{|c|c|c|c|c|c|c|c|c|}
+		\hline
+		x_1 & x_2 & x_3 & x_4 & f & \sigma_1 & \sigma_2 & \sigma_3 & \sigma_4 \\
+		\hline
+		1 & 1 & 1 & 1 & 64 & 4 & 6 & 4 & 1 \\
+		\hline
+		1 & 1 & 1 & 0 & 8 & 3 & 3 & 1 & 0 \\
+		\hline
+		1 & 1 & 0 & 0 & 0 & 2 & 1 & 0 & 0 \\
+		\hline
+		1 & 1 & -1 & -1 & 0 & 0 & -2 & 0 & 1 \\
+		\hline
+	\end{array}$
+	$\Rightarrow \begin{cases}
+		a\cdot6^2 + 4\cdot6\cdot4 + b\cdot4^2\cdot1 + c\cdot4^2 + d\cdot6\cdot1 = 64 \\
+		a\cdot3^2 + 3\cdot3\cdot1 + b\cdot3^2\cdot0 + c\cdot1^2 + d\cdot3\cdot0 = 8 \\
+		a\cdot1^2 + 2\cdot1\cdot0 + b\cdot2^2\cdot0 + c\cdot0^2 + d\cdot1\cdot0 = 0 \\
+		a\cdot(-2)^2 + 0\cdot(-2)\cdot0 + b\cdot0^2\cdot1 + c\cdot0^2 + d\cdot(-2)\cdot1 = 0 \\
+	\end{cases}$
+	$\Rightarrow \begin{cases}
+	a = 0 \\
+	b = -1 \\
+	c = -1 \\
+	d = 0 \\
+	\end{cases}$
+	$\Rightarrow f = \sigma_1\sigma_2\sigma_3 - \sigma_1^2\sigma_4 - \sigma_3^2$ \\\\\\
+
+	\textbf{№2} \\
+	
+	Пусть $\alpha_1, \alpha_2, \alpha_3$ -- комплексные корни многочлена $3x^3 + 2x^2 - 1$. Тогда найдем значение $\dfrac{\alpha_1\alpha_2}{\alpha_3} + + \dfrac{\alpha_1\alpha_3}{\alpha_2} + \dfrac{\alpha_2\alpha_3}{\alpha_1}$: \\
+	Рассмотрим приведенный многочлен $x^3 + \dfrac{2}{3}x^2 - \dfrac{1}{3}$, тогда, воспользовавшись теоремой Виета, получим: \\\\
+	$\begin{cases}
+	\sigma_1 = \alpha_1 + \alpha_2 + \alpha_3 = -\dfrac{2}{3}\\
+	\sigma_2 = \alpha_1\alpha_2 + \alpha_1\alpha_3 + \alpha_2\alpha_3 = 0 \\
+	\sigma_3 = \alpha_1\alpha_2\alpha_3 = \dfrac{1}{3}\\
+	\end{cases}$ \\\\
+	Рассмотрим $\sigma_2^2$:
+	$$\sigma_2^2 = \alpha_1^2\alpha_2^2 + \alpha_1^2\alpha_3^2 + \alpha_2^2\alpha_3^2 + 2\alpha_1^2\alpha_2\alpha_3 + 2\alpha_1\alpha_2^2\alpha_3 + 2\alpha_1\alpha_2\alpha_3^2 =$$
+	$$= \alpha_1^2\alpha_2^2 + \alpha_1^2\alpha_3^2 + \alpha_2^2\alpha_3^2 + 2\alpha_1\alpha_2\alpha_3(\alpha_1 + \alpha_2 + \alpha_3) =$$
+	$$\alpha_1^2\alpha_2^2 + \alpha_1^2\alpha_3^2 + \alpha_2^2\alpha_3^2 + 2\sigma_3\sigma_1 =$$
+	$$\alpha_1^2\alpha_2^2 + \alpha_1^2\alpha_3^2 + \alpha_2^2\alpha_3^2 + 2\dfrac{1}{3}(-\dfrac{2}{3}) = 0$$
+	$$\Rightarrow \alpha_1^2\alpha_2^2 + \alpha_1^2\alpha_3^2 + \alpha_2^2\alpha_3^2 = \dfrac{4}{9}$$
+	Поделим на $\sigma_3$:
+	$$\dfrac{\alpha_1^2\alpha_2^2 + \alpha_1^2\alpha_3^2 + \alpha_2^2\alpha_3^2}{\alpha_1\alpha_2\alpha_3} = \dfrac{\frac{4}{9}}{\frac{1}{3}}$$
+	$$\Rightarrow \dfrac{\alpha_1\alpha_2}{\alpha_3} + \dfrac{\alpha_1\alpha_3}{\alpha_2} + \dfrac{\alpha_2\alpha_3}{\alpha_1} = \dfrac{4}{3}$$ \\
+	
+	\textbf{№3} \\
+	
+	Пусть $x_1, x_2, x_3$ -- корни многочлена $x^3 + x - 1$. Тогда по теореме Виета: \\
+	$\sigma_1 = x_1 + x_2 + x_3 = 0$ \\
+	$\sigma_2 = x_1x_2 + x_1x_3 + x_2x_3 = 1$ \\ 
+	$\sigma_3 = x_1x_2x_3 = 1$
+	
+	Теперь рассмотрим многочлен$x^4 + ax^3 + bx^2 + cx + d$, корни которого: $x_1^3, x_2^3, x_3^3, 1 \Rightarrow$ \\
+	$\sigma_1' = x_1^3 + x_2^3 + x_3^3 + 1 = -a$ \\
+	$\sigma_2' = x_1^3x_2^3 + x_1^3x_3^3 + x_1^3 + x_2^3x_3^3 + x_2^3 + x_3^3 = b$ \\ 
+	$\sigma_3' = x_1^3x_2^3x_3^3 + x_1^3x_2^3 + x_1^3x_3^3 + x_2^3x_3^3= = -c$ \\
+	$\sigma_4' = x_1^3x_2^3x_3^3 = d$
+	
+	Найдем $a, b, c, d$: \\
+	$d = x_1^3x_2^3x_3^3 = (\underbrace{x_1x_2x_3}_1)^3 = 1$ \\
+	$\begin{cases}
+		x_1^3 = -x_1 + 1 \\
+		x_2^3 = -x_2 + 1 \\
+		x_3^3 = -x_3 + 1 \\
+	\end{cases}$
+	$\Rightarrow \sigma_1' = -x_1 -x_2 - x_3 + 4 = -(\underbrace{x_1 + x_2 + x_3}_0) + 4 = 4 \Rightarrow a = -4$
+	$$x_1^3x_2^3 + x_1^3x_3^3 + x_2^3x_3^3 = x_1^3(x_2^3 + x_3^3) + x_2^3x_3^3 = (-x_1 + 1)(-x_2 + 1 - x_3 + 1) + (-x_2 + 1)(-x_3 + 1) =$$
+	$$= \underbrace{x_1x_2 + x_1x_3 + x_2x_3}_1 - 2(\underbrace{x_1 + x_2 + x_3}_0) + 3 = 4$$
+	$\Rightarrow \sigma_2' = \underbrace{x_1^3x_2^3 + x_1^3x_3^3 + x_2^3x_3^3}_4 + \underbrace{x_1^3 + x_2^3 + x_3^3}_{-a-1 = 3} = 7 \Rightarrow b = 7$ \\
+	$\Rightarrow \sigma_3' = \underbrace{x_1^3x_2^3x_3^3}_1 + \underbrace{x_1^3x_2^3 + x_1^3x_3^3 + x_2^3x_3^3}_4 = 5 \Rightarrow c = -5$ \\
+	Таким образом, искомый многочлен: $x^4 - 4x^3 + 7x^2 - 5x + 1$ \\\\\\
+
+	\textbf{№4} \\
+	
+	Не существует бесконечной последовательности одночленов от переменных $x_1, x_2, \ldots ,x_n$, в которой каждый последующий член строго меньше предыдущего в лексикографическом порядке. Докажем это индукцией по переменным:
+	
+	Для $n = 1$ рассмотрим старший член $x^k$, и так как степень каждого последующего члена строго меньше, то, очевидно, их конечное множество, а следовательно утверждение верно.
+	
+	Предположим, что для $n$ -- верно. Тогда докажем для $n + 1$. Сначала рассмотрим старший одночлен $x_1^{k_1}x_2^{k_2}\ldots x_{n+1}^{k_{n+1}}$ в последовательности. Во всех последующих членах степень $x_1$ будет либо такой же, либо меньше. То есть у каждого слагаемого будет определенная степень $k_1$ при $x_1$, которая не возрастает относительно последующих слагаемых. Тогда по предположению индукции таких одночленов конечное множество, и степень начнет уменьшаться. Таким образом, последовательности одночленов от переменных $x_1, \ldots ,x_{n+1}$, в которой каждый последующий член строго меньше предыдущего в лексикографическом порядке конечны. \\
+	
+\end{document}
