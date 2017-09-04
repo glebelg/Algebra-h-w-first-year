@@ -1,0 +1,120 @@
+\documentclass[a4paper, 12pt]{article}
+
+\usepackage[T2A]{fontenc}			% кодировка
+\usepackage[utf8]{inputenc}			% кодировка исходного текста
+\usepackage[english,russian]{babel}	% локализация и переносы
+
+\usepackage{amsmath}
+\usepackage{icomma} 				% "Умная" запятая
+\usepackage{amsfonts}
+
+\sloppy
+\usepackage[T2A]{fontenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\graphicspath{{pictures/}}
+\DeclareGraphicsExtensions{.pdf,.png,.jpg}
+
+\newcommand{\ip}[2]{(#1, #2)}
+
+\title{Д/з - 1}
+\author{Чистяков Глеб, группа 167}
+\date{\today}
+
+\begin{document}
+	
+	\maketitle
+	
+	\textbf{№1} \\
+	
+	Докажем, что формула $m \circ n = mn - m - n + 2$ задает бинарную операцию на множестве $(\mathbb{Q}\setminus\{1\}, \circ)$:
+	
+	В $m \circ n$ используются лишь операции $+, -, \times \Rightarrow m \circ n \in \mathbb{Q}$
+	Предположим, что $m \circ n = 1 \Rightarrow mn - m - n + 2 = 1 \Leftrightarrow m(n - 1) = n - 1 \Rightarrow m = \frac{n - 1}{n - 1} \Rightarrow n \neq 1$, тогда $m = 1$, но $m, n \in \mathbb{Q}\setminus\{1\}$, а следовательно, наше предположение неверно. Значит $m \circ n \neq 1$ и $m \circ n \in (\mathbb{Q}\setminus\{1\}, \circ)$.
+	
+	Таким образом, формула $m \circ n = mn - m - n + 2$ задает бинарную операцию на множестве $(\mathbb{Q}\setminus\{1\}, \circ)$. \\
+	
+	Докажем, что $(\mathbb{Q}\setminus\{1\}, \circ)$ является группой: \\
+	1) Проверим $(a \circ b) \circ с = a \circ (b \circ c)$:
+	\begin{center}
+		$(a \circ b) \circ с = (ab - a - b + 2) \circ c =$ \\
+		$= (abc - ac - bc + 2c) - (ab - a - b + 2) - c + 2 =$ \\
+		$= abc - ab - ac - bc + a + b + c =$ \\
+		$= (abc - ab - ac + 2a) - a - (bc - b - c + 2) + 2 =$ \\
+		$a \circ (bc - b - c + 2) = a \circ (b \circ c)$ \\
+	\end{center}
+	2) Нейтральный элемент: \\
+ 	Пусть $a$ - какой-то элемент, тогда рассмотрим такой элемент $e$, что $a \circ e = e \circ a = a$:
+	\begin{center}
+	$a \circ e = ae - a - e + 2 = a \Leftrightarrow e(a - 1) = 2a - 2 \Rightarrow e = 2$ \\
+	$e \circ a = ea - e - a + 2 = a \Leftrightarrow e(a - 1) = 2a - 2 \Rightarrow e = 2$
+	\end{center}
+	$\Longrightarrow e = 2$ - нейтральный элемент. \\
+	\newline
+	\newline
+	\newline
+	3) Обратный элемент: \\
+	Пусть $a$ - какой-то элемент, тогда рассмотрим $a^{-1}: a \circ a^{-1} = a^{-1} \circ a= 2$, то есть
+	\begin{center}
+		$a \circ a^{-1} = aa^{-1} - a - a^{-1} = 2 \Leftrightarrow a^{-1}(a - 1) = a \Rightarrow a^{-1} = \dfrac{a}{a - 1}$ \\
+		$a^{-1} \circ a = a^{-1}a - a^{-1} - a = 2 \Leftrightarrow a^{-1}(a - 1) = a \Rightarrow a^{-1} = \dfrac{a}{a - 1}$ \\
+	\end{center}
+	$\Longrightarrow a^{-1} = \dfrac{a}{a - 1}$ - обратный элемент. \\
+	
+	Таким образом, $(\mathbb{Q}\setminus\{1\}, \circ)$ является группой.
+	\newline
+
+	\textbf{№2} \\
+	
+	Запишем таблицу, где каждому $x \in (\mathbb{Z}_{12}, +)$ соответствует $ord(x)$: \\
+	
+	\begin{tabular}{|c|rrrrrrrrrrrr|} \hline
+		$\mathbb{Z}_{12}$ & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 \\ \hline
+		Порядок & 1 & 12 & 6 & 4 & 3 & 12 & 2 & 12 & 3 & 4 & 6 & 12 \\ \hline
+	\end{tabular}
+	\newline \\
+	
+	\textbf{№3} \\
+	
+	Подгруппой группы $G = (\mathbb{Z}_{12}, +)$ назовем такое $H$, для которого:\\
+	1) $0 \in H$ \\
+	2) $a \in H \Rightarrow a^{-1} \in H$ \\
+	3) $a, b \in H \Rightarrow a + b \in H$ \\
+	
+	Несобственные подгруппы: \\
+	\{0\} \\
+	\{0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11\} \\
+	
+	Собственные подгруппы: \\
+	
+	Можно заметить, что наша группа $G$ является циклической (так как имеет циклическую подгруппу $<1> = G$). Тогда докажем такое утверждение: \\
+	\textit{Каждая подгруппа циклической группы - циклическая.}
+	
+	Пусть $G = <g_0>, g_0^n \in H, n \in \mathbb{N}$ - наименьшее. $\exists k: \forall a \in <g_0^n> a = (g_0^n)^k \in H \Rightarrow <g_0^n> \subseteq H$.
+	\newline
+	\newline
+	
+	Все элементы группы $G$ с образующей $g_0$ представимы в виде $ g_0^n \in H $, где $n \in \mathbb{N}$ - наименьшее. Тогда любой элемент $g \in H$ можно выразить, как $g = g_0^m, m = qn + r, 0 \leq r < n \Rightarrow g = g_0^m = g_0^{qn + r} = (g_0^n)^qg_0^r \Rightarrow g_0^r = (g_0^n)^{-q}g \Rightarrow r = 0 \Rightarrow g = (g_0^n)^q \Rightarrow <g_0^n> \supseteq H$.
+	
+	Таким образом, $H$ - циклическая, с образующей $<g_0^n>$.\\
+	
+	Тогда переберем все циклические подгруппы: \\
+	$<2> = \{0, 2, 4, 6, 8, 10\}$ \\
+	$<3> = \{0, 3, 6, 9\}$ \\
+	$<4> = \{0, 4, 8\}$ \\
+	$<5> = \{0, 5, 10\}$ \\
+	$<6> = \{0, 6\}$ \\
+	$<7> = \{0, 7\}$ \\
+	$<8> = \{0, 8\}$ \\
+	$<9> = \{0, 9\}$ \\
+	$<10> = \{0, 10\}$ \\
+	$<11> = \{0, 11\}$ \\
+	
+	Из них нам подходят только $<2>, <3>, <4>, <6>$
+	\newline
+	
+	\textbf{№4} \\
+	
+	Для начала рассмотрим группу, порядки элементов которых конечны. В этом случае количество конечных циклических подгрупп, очевидно, будет бесконечным. Если же сушествует элемент с бесконечным порядком, тогда будет существовать бесконечная циклическая подгруппа, порождаемоя этим элементом, включающая бесконечное множество циклических подгрупп. Таким образом, любая бесконечная группа сожержит бесконечное число подгрупп.
+	
+\end{document}
